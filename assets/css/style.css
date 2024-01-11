@@ -1,0 +1,283 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+@font-face {
+    font-family: "Neue Machina";
+    src: url('/assets/fonts/neueMachinaRegular.otf');
+}
+
+body {
+    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);    height: 100vh;
+}
+
+section.main {
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+
+header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+}
+
+header img {
+    width: 205px;
+    height: 205px;
+    border-radius: 50%;
+}
+
+header .title {
+    font-family:"Neue Machina";
+    text-align: center;
+}
+
+div.header {
+    padding: 1rem;
+}
+
+div.information {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.information p {
+    margin: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1.125rem;
+}
+
+.information p::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: .5rem;
+}
+
+.information #job::before {
+    background-image: url('/assets/image/icons/job.svg');   
+}
+
+.information #hotspot::before {
+    background-image: url('/assets/image/icons/hotspot.svg');
+}
+.information #whatsapp::before {
+    background-image: url('/assets/image/icons/whatsapp.svg');
+}
+
+.information #email::before {
+    background-image: url('/assets/image/icons/email.svg');
+}
+
+/* second part: acordeon */
+
+.acordeon {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #fff;
+    border-radius: 1rem;
+    transition: .25s ease;
+}
+
+.acordeon:hover {
+    background-color: #55569e;
+    border-color: #55569e;
+}
+
+.acordeon .trigger {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+
+.acordeon .trigger:hover {
+    cursor: pointer;
+}
+
+.acordeon .trigger::after {
+    display: inline-block;
+    width: 1.75rem;
+    height: 1.1875rem;
+    background-image: url('/assets/image/icons/arrow-top.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+}
+
+.acordeon div {
+    overflow: hidden;
+    transition: .25s ease-in;
+    height: 0px;
+    opacity: 0;
+    padding: 0 1rem 1rem 2rem;
+
+}
+
+.acordeon.open div {
+    overflow: visible;
+    height: 100%;
+    opacity: 1;    
+    padding: 0 1rem 1rem 2rem;
+}
+
+.acordeon.open .trigger::after {
+    transform: rotate(180deg);
+}
+
+/* content of each acordeon */
+
+#skills {
+    display: grid;
+        grid-template-areas: 
+        "hardSkill softSkill"
+        "icons  mySkills";
+    color: #fff;
+    justify-items: center;
+}
+
+#skills img {
+    width: 10rem;
+}
+
+#mySkills ul {
+    font-size: 0.8125rem;
+    column-count: 2;
+    margin-bottom: 10px;
+}
+
+#mySkills ul li {
+    margin-bottom: 10px;
+}
+
+#languages {
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    flex-wrap: wrap;
+    margin: 0;
+    list-style: none;
+    gap: 30px;
+}
+
+#languages li {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+#languages li::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    background-image: url('/assets/image/icons/check.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#education {
+    display: flex;
+    flex-direction: column;
+}
+
+#education h1 {
+    align-self: center;
+    color: #fff;
+    font-weight: 456px;
+}
+
+#education h3 {
+    margin-bottom: 0;
+    color: #fff;
+    font-weight: 536px;
+}
+
+#education p {
+    color: #fff;
+    font-weight: 164px;
+}
+
+#insignias {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 0 1rem;
+    margin-bottom: 50px;
+}
+
+#insignias img {
+    width: 1.75rem;
+}
+
+
+/* responsividade */
+
+@media (min-width: 768px) {
+    header{
+        display: grid;
+        grid-template-areas: 
+        "photo title"
+        "photo information";
+    }
+
+    header .photo {
+        grid-area: photo;
+        margin: auto;
+    }
+
+    header .title {
+        grid-area: title;
+        max-width: 200px;
+    }
+
+    header .information {
+        grid-area: information;
+    }
+
+    section.main {
+        max-width: 1034px;
+        margin: 1rem auto;
+    }
+        
+  }
+
+  @media (max-width: 767px) {
+    #skills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #skills img {
+        margin-bottom: 2.8125rem;
+    }
+
+    #mySkills ul {
+        column-gap:20px;
+        padding: 0 1rem;
+    } 
+  }
+  
